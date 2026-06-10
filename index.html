@@ -8,8 +8,8 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    color: white;
+    background: #0d0d0d;
+    color: #f5f5f5;
     text-align: center;
     overflow-x: hidden;
 }
@@ -19,14 +19,24 @@ body {
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 2.7em;
+    color: #ff4d6d;
+}
+
+h2 {
+    color: #ff85a1;
+}
+
+p {
+    color: #e0e0e0;
+    font-size: 1.2em;
 }
 
 .gallery img {
     width: 250px;
     margin: 10px;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
     transition: transform 0.3s;
 }
 
@@ -36,11 +46,11 @@ h1 {
 
 button {
     margin-top: 20px;
-    padding: 12px 20px;
+    padding: 12px 22px;
     border: none;
     border-radius: 12px;
-    background: white;
-    color: #ff4d6d;
+    background: #ff4d6d;
+    color: white;
     font-weight: bold;
     cursor: pointer;
 }
@@ -51,17 +61,27 @@ iframe {
     border-radius: 10px;
 }
 
-/* corazones */
-.heart {
+video {
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+/* FLORES */
+.flower {
     position: fixed;
-    color: red;
-    font-size: 20px;
-    animation: fall 5s linear infinite;
+    font-size: 24px;
+    animation: fall 6s linear infinite;
 }
 
 @keyframes fall {
-    0% { transform: translateY(-10%); opacity: 1; }
-    100% { transform: translateY(110vh); opacity: 0; }
+    0% {
+        transform: translateY(-10%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
 }
 </style>
 </head>
@@ -70,35 +90,36 @@ iframe {
 
 <div class="container">
     <h1>Feliz Cumpleaños 24 🎂❤️</h1>
-    <h2>Nataly Beighi 💕</h2>
+    <h2>Nataly Beighi 🌷💕</h2>
 
     <p>
         Hoy celebro tu vida… porque eres lo mejor que me ha pasado ✨ <br><br>
         Gracias por cada momento contigo 💖 <br><br>
+        Eres una persona increíble… y me siento afortunado de tenerte en mi vida 🌙<br><br>
         Te amo muchísimo ❤️
     </p>
 
-  
-<div class="gallery">
-    <img src="Img1.jpeg" alt="foto 1">
-    <img src="Img2.jpeg" alt="foto 2">
-    <img src="Img3.jpeg" alt="foto 3">
-</div>
+    <!-- GALERÍA -->
+    <div class="gallery">
+        <img src="Img1.jpeg">
+        <img src="Img2.jpeg">
+        <img src="Img3.jpeg">
+    </div>
 
-
- <video width="300" controls>
-    <source src="Vid.mp4" type="video/mp4">
-    Tu navegador no soporta video.
-</video>
+    <!-- VIDEO -->
+    <h3>Un recuerdo especial 🎥</h3>
+    <video width="300" controls>
+        <source src="Vid.mp4" type="video/mp4">
+    </video>
 
     <br>
 
     <button onclick="reproducir()">Nuestra canción 🎵</button>
 
-  <iframe id="player" width="300" height="180"
-src="https://www.youtube.com/embed/3GQGdYXu5yc"
-frameborder="0" allow="autoplay"></iframe>
-
+    <!-- CANCIÓN -->
+    <iframe id="player" width="300" height="180"
+    src="https://www.youtube.com/embed/3GQGdYXu5yc"
+    frameborder="0" allow="autoplay"></iframe>
 
 </div>
 
@@ -109,18 +130,25 @@ function reproducir() {
     player.src += "?autoplay=1";
 }
 
-// corazones
-function crearCorazon() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-    document.body.appendChild(heart);
+// FLORES (tulipanes)
+function crearFlor() {
+    const flower = document.createElement("div");
+    flower.className = "flower";
 
-    setTimeout(() => heart.remove(), 5000);
+    const flores = ["🌷", "🌹", "💐"];
+    flower.innerText = flores[Math.floor(Math.random() * flores.length)];
+
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+    document.body.appendChild(flower);
+
+    setTimeout(() => {
+        flower.remove();
+    }, 6000);
 }
-setInterval(crearCorazon, 300);
+
+setInterval(crearFlor, 400);
 </script>
 
 </body>
