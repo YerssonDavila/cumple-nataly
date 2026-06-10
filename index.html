@@ -107,7 +107,11 @@ function iniciar() {
     document.getElementById("contenido").style.display = "block";
 
     // reproducir música
-    document.getElementById("musica").play();
+    function reproducirMusica() {
+    const audio = document.getElementById("musica");
+    audio.play();
+}
+``
 
     // mostrar imágenes en secuencia
     setTimeout(() => document.getElementById("img1").style.opacity = 1, 1000);
