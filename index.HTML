@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Cumpleaños ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+.gallery img {
+    width: 250px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: #ff4d6d;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+iframe {
+    display: none;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* corazones */
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10%); opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Feliz Cumpleaños 24 🎂❤️</h1>
+    <h2>Nataly Beighi 💕</h2>
+
+    <p>
+        Hoy celebro tu vida… porque eres lo mejor que me ha pasado ✨ <br><br>
+        Gracias por cada momento contigo 💖 <br><br>
+        Te amo muchísimo ❤️
+    </p>
+
+    <!-- GALERÍA -->
+    <div class="gallery">
+        Img1.jpeg
+        Img2.jpeg
+        Img3.jpeg
+    </div>
+
+    <!-- VIDEO -->
+    <h3>Un recuerdo especial 🎥</h3>
+    <video width="300" controls>
+        Vid.mp4
+        Tu navegador no soporta video.
+    </video>
+
+    <br>
+
+    <button onclick="reproducir()">Nuestra canción 🎵</button>
+
+    <!-- CANCIÓN -->
+    https://www.youtube.com/embed/3GQGdYXu5yc
+    </iframe>
+
+</div>
+
+<script>
+function reproducir() {
+    let player = document.getElementById("player");
+    player.style.display = "block";
+    player.src += "?autoplay=1";
+}
+
+// corazones
+function crearCorazon() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(crearCorazon, 300);
+</script>
+
+</body>
+</html>
