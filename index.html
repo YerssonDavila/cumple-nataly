@@ -111,11 +111,15 @@ function iniciar() {
     document.getElementById("inicio").style.display = "none";
     document.getElementById("contenido").style.display = "block";
 
+    // reproducir música
+    document.getElementById("musica").play();
+
     // mostrar imágenes en secuencia
     setTimeout(() => document.getElementById("img1").style.opacity = 1, 1000);
     setTimeout(() => document.getElementById("img2").style.opacity = 1, 3000);
     setTimeout(() => document.getElementById("img3").style.opacity = 1, 5000);
 }
+``
 
 // flores
 function crearFlor() {
