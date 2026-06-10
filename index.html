@@ -93,7 +93,7 @@ img {
 
     <!-- iframe para música -->
     <audio id="musica">
-    <source src="cancion.mp3" type="audio/mpeg">
+    <source src="cancion.mp3" type="audio">
 </audio>
 ``
  
@@ -107,12 +107,11 @@ function iniciar() {
     document.getElementById("contenido").style.display = "block";
 
     // reproducir música
-    function reproducirMusica() {
-    const audio = document.getElementById("musica");
-    audio.play();
-}
-``
+   
+ const audio = document.getElementById("musica");
+    audio.play().catch(()=>{});
 
+    
     // mostrar imágenes en secuencia
     setTimeout(() => document.getElementById("img1").style.opacity = 1, 1000);
     setTimeout(() => document.getElementById("img2").style.opacity = 1, 3000);
