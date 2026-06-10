@@ -2,71 +2,54 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Feliz Cumpleaños ❤️</title>
+<title>Para ti ❤️</title>
 
 <style>
 body {
     margin: 0;
-    font-family: Arial;
     background: #0d0d0d;
-    color: #f5f5f5;
+    color: white;
     text-align: center;
-    overflow-x: hidden;
+    font-family: Arial;
+    overflow: hidden;
 }
 
-.container {
-    padding: 20px;
+/* Pantalla inicial */
+#inicio {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-h1 {
-    font-size: 2.7em;
-    color: #ff4d6d;
-}
-
-h2 {
-    color: #ff85a1;
-}
-
-p {
-    color: #e0e0e0;
-    font-size: 1.2em;
-}
-
-.gallery img {
-    width: 250px;
-    margin: 10px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
-    transition: transform 0.3s;
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
-}
-
-button {
-    margin-top: 20px;
-    padding: 12px 22px;
+#inicio button {
+    padding: 15px 25px;
+    font-size: 18px;
     border: none;
     border-radius: 12px;
     background: #ff4d6d;
     color: white;
-    font-weight: bold;
     cursor: pointer;
 }
 
-iframe {
+/* contenido oculto */
+#contenido {
     display: none;
-    margin-top: 20px;
-    border-radius: 10px;
+    padding: 20px;
 }
 
-video {
-    margin-top: 20px;
+img {
+    width: 250px;
+    margin: 15px;
     border-radius: 12px;
+    opacity: 0;
+    transition: opacity 2s;
 }
 
-/* FLORES */
+/* flores */
 .flower {
     position: fixed;
     font-size: 24px;
@@ -74,81 +57,80 @@ video {
 }
 
 @keyframes fall {
-    0% {
-        transform: translateY(-10%);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(110vh);
-        opacity: 0;
-    }
+    0% { transform: translateY(-10%); }
+    100% { transform: translateY(110vh); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>Feliz Cumpleaños 24 🎂❤️</h1>
-    <h2>Nataly Beighi 🌷💕</h2>
+<!-- Pantalla inicial -->
+<div id="inicio">
+    <button onclick="iniciar()">Abre tu sorpresa ❤️</button>
+</div>
+
+<!-- Contenido -->
+<div id="contenido">
+    <h1>Feliz Cumpleaños 🎂❤️</h1>
+    <h2>Nataly Beighi 🌷</h2>
 
     <p>
-        Hoy celebro tu vida… porque eres lo mejor que me ha pasado ✨ <br><br>
-        Gracias por cada momento contigo 💖 <br><br>
-        Eres una persona increíble… y me siento afortunado de tenerte en mi vida 🌙<br><br>
+        Hoy celebro tu vida… ✨ <br>
+        Gracias por hacerme tan feliz 💖 <br>
         Te amo muchísimo ❤️
     </p>
 
-    <!-- GALERÍA -->
-    <div class="gallery">
-        <img src="Img1.jpeg">
-        <img src="Img2.jpeg">
-        <img src="Img3.jpeg">
-    </div>
+    <img src="Img1.jpeg" id="img1">
+    <img src="Img2.jpeg" id="img2">
+    <img src="Img3.jpeg" id="img3">
 
-    <!-- VIDEO -->
-    <h3>Un recuerdo especial 🎥</h3>
+    <br>
+
     <video width="300" controls>
         <source src="Vid.mp4" type="video/mp4">
     </video>
 
-    <br>
+    <!-- audio oculto -->
+    <audio id="musica">
+        <source src="https://www.youtube.com/embed/3GQGdYXu5yc">
+    </audio>
 
-    <button onclick="reproducir()">Nuestra canción 🎵</button>
-
-    <!-- CANCIÓN -->
-    <iframe id="player" width="300" height="180"
-    src="https://www.youtube.com/embed/3GQGdYXu5yc"
-    frameborder="0" allow="autoplay"></iframe>
+    <!-- iframe para música -->
+   <iframe id="player" width="0" height="0"
+src="https://www.youtube.com/embed/3GQGdYXu5yc?autoplay=1&loop=1"
+frameborder="0"></iframe>
 
 </div>
 
 <script>
-function reproducir() {
-    let player = document.getElementById("player");
-    player.style.display = "block";
-    player.src += "?autoplay=1";
+
+function iniciar() {
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("contenido").style.display = "block";
+
+    // mostrar imágenes en secuencia
+    setTimeout(() => document.getElementById("img1").style.opacity = 1, 1000);
+    setTimeout(() => document.getElementById("img2").style.opacity = 1, 3000);
+    setTimeout(() => document.getElementById("img3").style.opacity = 1, 5000);
 }
 
-// FLORES (tulipanes)
+// flores
 function crearFlor() {
     const flower = document.createElement("div");
     flower.className = "flower";
 
     const flores = ["🌷", "🌹", "💐"];
-    flower.innerText = flores[Math.floor(Math.random() * flores.length)];
+    flower.innerText = flores[Math.floor(Math.random()*flores.length)];
 
     flower.style.left = Math.random() * 100 + "vw";
-    flower.style.animationDuration = (Math.random() * 3 + 3) + "s";
-
     document.body.appendChild(flower);
 
-    setTimeout(() => {
-        flower.remove();
-    }, 6000);
+    setTimeout(() => flower.remove(), 6000);
 }
 
 setInterval(crearFlor, 400);
+
 </script>
 
 </body>
